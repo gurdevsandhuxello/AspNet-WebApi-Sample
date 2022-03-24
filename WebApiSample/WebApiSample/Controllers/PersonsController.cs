@@ -81,5 +81,25 @@ namespace WebApiSample.Controllers
                 db.SaveChanges();
             }
         }
+
+        public void Delete(int xx)
+        {
+            using (var db = new WebApiSampleContext())
+            {
+                Person theperson = (from p in db.Persons
+                    where p.Id == xx
+                    select p).FirstOrDefault();
+
+                var name = theperson.Name;
+
+                // Console.WriteLine(name);
+                
+
+
+
+                db.Persons.Remove(theperson);
+                db.SaveChanges();
+            }
+        }
     }
 }
