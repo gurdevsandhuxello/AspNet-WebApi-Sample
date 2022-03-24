@@ -81,27 +81,5 @@ namespace WebApiSample.Controllers
                 db.SaveChanges();
             }
         }
-
-        // DELETE api/persons/5
-        public void Delete(string id)
-        {
-            using (var db = new WebApiSampleContext())
-            {
-                Person value = (from p in db.Persons
-                                where p.Phone == id
-                                select p).FirstOrDefault();
-
-                if (value == null)
-                {
-                    // TODO: Resturn an error.
-                    return;
-                }
-
-                db.Persons.Remove(value);
-                db.SaveChanges();
-            }
-        }
-
-
     }
 }
